@@ -1,7 +1,7 @@
 class Node {
-	constructor(data, next = null) {
+	constructor(data, pointer = null) {
 		this.data = data;
-		this.next = next;
+		this.pointer = pointer;
 	}
 }
 
@@ -24,10 +24,10 @@ class LinkedList {
 			this.head = node;
 		} else {
 			current = this.head;
-			while (current.next) {
-				current = current.next;
+			while (current.pointer) {
+				current = current.pointer;
 			}
-			current.next = node;
+			current.pointer = node;
 		}
 		this.size++;
 	}
@@ -53,10 +53,10 @@ class LinkedList {
 		while (count < index) {
 			prev = current;
 			count++;
-			current = current.next;
+			current = current.pointer;
 		}
-		node.next = current;
-		prev.next = node;
+		node.pointer = current;
+		prev.pointer = node;
 	}
 
 	getAt(index) {
@@ -64,10 +64,10 @@ class LinkedList {
 		let count = 0;
 
 		while (current) {
-			if (count == index) console.log(current.data);
+			if (count === index) console.log(current.data);
 
 			count++;
-			current = current.next;
+			current = current.pointer;
 		}
 		return null;
 	}
@@ -78,15 +78,15 @@ class LinkedList {
 		let count = 0;
 
 		if (index === 0) {
-			this.head = current.next;
+			this.head = current.pointer;
 		} else {
 			while (count < index) {
 				prev = current;
-				current = current.next;
+				current = current.pointer;
 				count++;
 			}
 
-			prev.next = current.next;
+			prev.pointer = current.pointer;
 		}
 
 		this.size--;
@@ -100,7 +100,7 @@ class LinkedList {
 
 		while (current) {
 			console.log(current.data);
-			current = current.next;
+			current = current.pointer;
 		}
 	}
 }
@@ -110,3 +110,4 @@ ll.insertLast(100);
 ll.insertLast(200);
 ll.insertLast(300);
 ll.printList();
+console.log(ll);
